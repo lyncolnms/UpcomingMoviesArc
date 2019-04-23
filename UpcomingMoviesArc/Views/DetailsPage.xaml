@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="UpcomingMoviesArc.Views.DetailsPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             ios:Page.LargeTitleDisplay="Always"
+             Title="{Binding TitlePage}">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="{Binding MovieInfo.Backdrop_Path}" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Aspect="Fill"/>
+                <Label Grid.Row="1" Text="{Binding MovieInfo.Title}" HorizontalTextAlignment="Center" FontAttributes="Bold" 
+                       FontSize="Large" LineBreakMode="WordWrap" d:Text="Avengers: Endgam asdasdsad adasdas sadas 666" 
+                       HorizontalOptions="CenterAndExpand" />
+                <Label Grid.Row="2" Text="{Binding MovieInfo.AllGenreNames}" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Row="3" Margin="10,0,10,10" Text="{Binding MovieInfo.Overview}" FontSize="Medium" 
+                       d:Text="After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store."/>
+                <Label Grid.Row="4" Text="{Binding MovieInfo.Release_Date}" Margin="10,0,0,0" HorizontalTextAlignment="Center"
+                       FontSize="Large" d:Text="24/04/2019"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

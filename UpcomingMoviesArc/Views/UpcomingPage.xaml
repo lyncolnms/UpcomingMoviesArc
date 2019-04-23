@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UpcomingMoviesArc.Views.UpcomingPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             ios:NavigationPage.IsNavigationBarTranslucent="true"
+             ios:NavigationPage.PrefersLargeTitles="true"
+             Title="Upcoming Movies">
+    <ContentPage.Content>
+      <StackLayout Orientation="Vertical" Padding="0">
+            <SearchBar Text="{Binding SearchMovies}" SearchCommand="{Binding SearchMoviesCommand}"/>
+            <ListView
+                ItemsSource="{Binding Movies}"
+                VerticalOptions="FillAndExpand"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="true"
+                SeparatorVisibility="None"
+                ItemTapped="GoToDetails"
+                ItemAppearing="LoadMoreMovies">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <StackLayout Padding="0" Orientation="Vertical" Grid.Column="0" >
+                                    <Image Source="{Binding Poster_Path}" Aspect="AspectFit" />
+                                </StackLayout> 
+                                
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />    
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="25" />
+                                    </Grid.RowDefinitions>
+                                          
+                                    <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"
+                                           LineBreakMode="WordWrap" Grid.Row="0" />
+                                    <Label Text="{Binding AllGenreNames}" LineBreakMode="WordWrap" Grid.Row="1" />
+                                    <Label Text="{Binding Release_Date}" FontSize="Medium"
+                                           Grid.Row="2" />    
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
